@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My GitHub Browser</title>
+  <!-- Add your CSS styles here -->
+  <style>
+    /* Define your CSS styles for the browser UI here */
+  </style>
+</head>
+<body>
+  <!-- Browser UI - Header -->
+  <header>
+    <input type="text" id="urlInput" placeholder="Enter URL">
+    <button id="goButton">Go</button>
+    <button id="backButton">Back</button>
+    <button id="forwardButton">Forward</button>
+    <button id="refreshButton">Refresh</button>
+  </header>
+
+  <!-- Browser UI - Content -->
+  <section>
+    <iframe id="browserFrame" src="https://github.com" frameborder="0"></iframe>
+  </section>
+
+  <!-- Add your JavaScript code here -->
+  <script>
+    // Reference DOM elements
+    var urlInput = document.getElementById("urlInput");
+    var goButton = document.getElementById("goButton");
+    var backButton = document.getElementById("backButton");
+    var forwardButton = document.getElementById("forwardButton");
+    var refreshButton = document.getElementById("refreshButton");
+    var browserFrame = document.getElementById("browserFrame");
+
+    // Add event listeners for UI buttons
+    goButton.addEventListener("click", function() {
+      var url = urlInput.value;
+      browserFrame.src = url;
+    });
+
+    backButton.addEventListener("click", function() {
+      browserFrame.contentWindow.history.back();
+    });
+
+    forwardButton.addEventListener("click", function() {
+      browserFrame.contentWindow.history.forward();
+    });
+
+    refreshButton.addEventListener("click", function() {
+      browserFrame.contentWindow.location.reload();
+    });
+  </script>
+</body>
+</html>
